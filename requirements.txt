@@ -1,1 +1,3 @@
 motor
+coverage
+codacy-coverage

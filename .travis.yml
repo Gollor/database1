@@ -5,4 +5,9 @@ install:
   - pip install -r requirements.txt
 script:
   - python test.py
+  - export CODACY_PROJECT_TOKEN=ac645a481ef845ceb86ebe957b177cf8
+  - coverage run --include=./*.py test.py
+  - coverage report
+  - coverage xml
+  - python-codacy-coverage -r coverage.xml
 services: mongodb

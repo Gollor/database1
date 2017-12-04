@@ -12,6 +12,7 @@ async def insert_city(index):
     name = np.random.choice(syllable_first) + np.random.choice(syllable_second)
     document = {"index": index, "name": name, "roads": []}
     result = await db.Cities.insert_one(document)
+    return result
 
 async def get_city(index):
     document = await db.Cities.find_one({'index': {'$eq': index}})
@@ -19,6 +20,7 @@ async def get_city(index):
 
 async def replace_city(index, obj):
     document = await db.Cities.replace_one({'index': {'$eq': index}}, obj)
+    return document
 
 async def insert_road(index, cities_amount):
     cityA = np.random.randint(cities_amount)
